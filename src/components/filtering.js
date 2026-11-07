@@ -11,6 +11,21 @@ export function initFiltering(elements) {
     }
 
     const applyFiltering = (query, state, action) => {
+        //очистка поля
+        if(action && action.name === 'clear') {
+            const parent = action.closest('.filter-wrapper');
+
+            if(parent) {
+                const input = parent.querySelector('input');
+
+                if(input) {
+                    input.value = '';
+                }
+            }
+            return query;
+        }
+
+        //фильтрация
         const filter = {};
         Object.keys(elements).forEach(key => {
             if (elements[key]) {
