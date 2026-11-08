@@ -16,13 +16,16 @@ export function initFiltering(elements) {
             const parent = action.closest('.filter-wrapper');
 
             if(parent) {
-                const input = parent.querySelector('input');
+                const fieldName = action.dataset.field;
+                const field = parent.querySelector('input, select');
 
-                if(input) {
-                    input.value = '';
+                if(field) {
+                    field.value = '';
+                }
+                if (fieldName) { 
+                    state[fieldName] = ''; 
                 }
             }
-            return query;
         }
 
         //фильтрация
